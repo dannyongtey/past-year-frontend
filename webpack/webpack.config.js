@@ -35,6 +35,12 @@ module.exports = {
     port: 9000,
     hot: true,
   },
+  resolve: {
+    modules: ['app', 'node_modules'],
+    extensions: [
+      '.js',
+    ],
+  },
   plugins: [
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({

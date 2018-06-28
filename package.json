@@ -15,8 +15,10 @@
   "author": "nguyen.van.thang@framgia.com",
   "license": "ISC",
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "webpack": "^4.8.3",
     "webpack-dev-server": "^3.1.4"
   },
