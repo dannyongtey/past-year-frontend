@@ -1,12 +1,12 @@
-const path = require('path');
+const path = require('path')
 
-const parentDir = path.join(__dirname, '../');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const parentDir = path.join(__dirname, '../')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: [
-    path.join(parentDir, 'app/app.js'),
+    path.join(process.cwd(), 'app/app.js'),
   ],
   module: {
     rules: [
@@ -23,10 +23,16 @@ module.exports = {
           loader: 'html-loader',
         },
       },
+      {
+        // Preprocess 3rd party .css files located in node_modules
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   output: {
-    path: path.join(parentDir, '/build'),
+    path: path.join(process.cwd(), '/build'),
     filename: 'bundle.js',
   },
   devServer: {

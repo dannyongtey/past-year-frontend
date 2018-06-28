@@ -42,6 +42,7 @@ module.exports = {
     "import/no-unresolved": 2,
     "import/prefer-default-export": 0,
     "import/extensions": 0,
+    "import/no-named-as-default": 0,
     "jsx-a11y/aria-props": 2,
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/heading-has-content": 0,
@@ -62,7 +63,7 @@ module.exports = {
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "./webpack/webpack.config.js"
+        "config": "./internals/webpack/webpack.config.js"
       }
     }
   }

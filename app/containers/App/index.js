@@ -1,18 +1,15 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import About from 'containers/About'
+import Learning from 'containers/Learning'
 import Home from 'containers/Home'
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <Fragment>
-        <p>
-          This is simple react app
-        </p>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/learning" component={Learning} />
         </Switch>
       </Fragment>
     )
