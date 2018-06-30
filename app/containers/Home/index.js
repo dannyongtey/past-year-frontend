@@ -41,12 +41,12 @@ export class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   username: selectUsername(state),
 })
 
-export const mapDispatchToProps = (dispatch) => ({
-  onChangeUsername: (value) => dispatch(setUsername(value)),
+export const mapDispatchToProps = dispatch => ({
+  onChangeUsername: value => dispatch(setUsername(value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

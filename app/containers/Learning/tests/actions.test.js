@@ -1,5 +1,5 @@
-import { SET_KEYWORD } from '../constants'
-import { setKeyword } from '../actions'
+import { SET_KEYWORD } from 'containers/Learning/constants'
+import { setKeyword } from 'containers/Learning/actions'
 
 describe('Learning Actions', () => {
   describe('setKeyword', () => {

@@ -21,11 +21,14 @@ Simple react boilerplate for newbie
 ## React v16
 - [**React 16.4**](https://reactjs.org/blog/2017/09/26/react-v16.0.html): Newest version of React
 
+## React router v4
+- [**React router v4**](https://reacttraining.com/react-router/web/guides/quick-start): Learn once, Route Anywhere
+
 ## React Redux
 - [**React Redux**](https://redux.js.org/basics/usage-with-react): Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
 
-## React router v4
-- [**React router v4**](https://reacttraining.com/react-router/web/guides/quick-start): Learn once, Route Anywhere
+## Redux saga
+- [**Redux saga**](https://redux-saga.js.org/): redux-saga is a library that aims to make application side effects (i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easier to manage, more efficient to execute, simple to test, and better at handling failures.
 
 ## Bootstrap v4
 - [**Bootstrap v4**](https://getbootstrap.com/docs/4.0/getting-started/introduction/): The world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.

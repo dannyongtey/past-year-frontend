@@ -1,21 +1,37 @@
 import {
-  selectLearning,
-  selectKeyword,
-} from '../selectors'
-import { context } from '../constants'
+  selectLearning, selectKeyword, selectValidKeywords, selectLoading, selectError,
+} from 'containers/Learning/selectors'
+import { context } from 'containers/Learning/constants'
 
 describe('selectGlobal', () => {
-  const keyword = 'key_word'
-  const learningState = { keyword }
+  const mockState = {
+    keyword: 'key_word',
+    validKeywords: ['react', 'redux'],
+    loading: false,
+    error: false,
+  }
+
   const mockedState = {
-    [context]: learningState,
+    [context]: mockState,
   }
 
   it('should select Learning state', () => {
-    expect(selectLearning(mockedState)).toEqual(learningState)
+    expect(selectLearning(mockedState)).toEqual(mockState)
   })
 
-  it('should select the keyword', () => {
-    expect(selectKeyword(mockedState)).toEqual(keyword)
+  it('should select keyword', () => {
+    expect(selectKeyword(mockedState)).toEqual(mockState.keyword)
+  })
+
+  it('should select validKeywords', () => {
+    expect(selectValidKeywords(mockedState)).toEqual(mockState.validKeywords)
+  })
+
+  it('should select loading', () => {
+    expect(selectLoading(mockedState)).toEqual(mockState.loading)
+  })
+
+  it('should select error', () => {
+    expect(selectError(mockedState)).toEqual(mockState.error)
   })
 })

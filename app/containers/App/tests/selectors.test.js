@@ -1,8 +1,8 @@
 import {
   selectGlobal,
   selectUsername,
-} from '../selectors'
-import { context } from '../constants'
+} from 'containers/App/selectors'
+import { context } from 'containers/App/constants'
 
 describe('selectGlobal', () => {
   const username = 'user_name'

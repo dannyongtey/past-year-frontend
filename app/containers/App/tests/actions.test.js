@@ -1,5 +1,5 @@
-import { SET_USER_NAME } from '../constants'
-import { setUsername } from '../actions'
+import { SET_USER_NAME } from 'containers/App/constants'
+import { setUsername } from 'containers/App/actions'
 
 describe('Learning Actions', () => {
   describe('setKeyword', () => {

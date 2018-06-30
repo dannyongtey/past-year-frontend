@@ -48,18 +48,8 @@ module.exports = {
     ],
   },
   plugins: [
-    // Minify and optimize the index.html
     new HtmlWebpackPlugin({
       template: 'index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        removeEmptyAttributes: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
       inject: true,
     }),
     new webpack.HotModuleReplacementPlugin(),

@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Input from 'components/Input'
 import { selectUsername } from 'containers/App/selectors'
+import LearningDocuments from 'components/LearningDocuments'
 
-import { selectKeyword } from './selectors'
-import { documents } from './constants'
-import { setKeyword } from './actions'
+import {
+  selectKeyword, selectValidKeywords, selectLoading, selectError,
+} from './selectors'
+import { setKeyword, fetchKeywords } from './actions'
 
 export class Learning extends PureComponent {
   static propTypes = {
@@ -16,6 +17,18 @@ export class Learning extends PureComponent {
     username: PropTypes.string,
     keyword: PropTypes.string,
     onChangeKeyword: PropTypes.func,
+    fetchKeywords: PropTypes.func,
+    validKeywords: PropTypes.arrayOf(PropTypes.object),
+    loading: PropTypes.bool,
+    error: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.bool,
+    ]),
+  }
+
+  componentDidMount() {
+    const { fetchKeywords: getKeywords } = this.props
+    getKeywords()
   }
 
   goToHomePage = () => {
@@ -23,18 +36,11 @@ export class Learning extends PureComponent {
     history.push('/')
   }
 
-  renderLearningLink(keyword) {
-    return ['react', 'redux', 'react-router', 'webpack'].indexOf(keyword) > -1 && (
-      <div className="text-center mb-3">
-        <a href={documents[keyword]} target="_blank" rel="noopener noreferrer">
-          Read documents
-        </a>
-      </div>
-    )
-  }
-
   render() {
-    const { keyword, username, onChangeKeyword } = this.props
+    const {
+      keyword, validKeywords, username, onChangeKeyword, loading, error,
+    } = this.props
+
     return (
       <div className="d-flex flex-column mt-4">
         <p className="d-flex justify-content-center text-center">
@@ -42,12 +48,19 @@ export class Learning extends PureComponent {
           <br />
           What do you want to learn?
           <br />
-          (React, Redux, React-router, Webpack)
         </p>
-        <div className="d-flex justify-content-center mb-3">
-          <Input value={keyword} onChange={onChangeKeyword} />
-        </div>
-        {keyword && this.renderLearningLink(keyword.toLowerCase())}
+        {loading ? (
+          <p className="d-flex justify-content-center text-center">
+            Loading...
+          </p>
+        ) : (
+          <LearningDocuments
+            keyword={keyword}
+            validKeywords={validKeywords}
+            onChangeKeyword={onChangeKeyword}
+            error={error}
+          />
+        )}
         <div className="d-flex justify-content-center">
           <button type="button" onClick={this.goToHomePage}>
             Go Home
@@ -58,13 +71,17 @@ export class Learning extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   keyword: selectKeyword(state),
   username: selectUsername(state),
+  validKeywords: selectValidKeywords(state),
+  loading: selectLoading(state),
+  error: selectError(state),
 })
 
-export const mapDispatchToProps = (dispatch) => ({
-  onChangeKeyword: (keyword) => dispatch(setKeyword(keyword)),
+export const mapDispatchToProps = dispatch => ({
+  onChangeKeyword: keyword => dispatch(setKeyword(keyword)),
+  fetchKeywords: () => dispatch(fetchKeywords()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Learning)

@@ -38,6 +38,7 @@ module.exports = {
         "SwitchCase": 1
       }
     ],
+    "max-len": 0,
     "import/first": 0,
     "import/no-unresolved": 2,
     "import/prefer-default-export": 0,

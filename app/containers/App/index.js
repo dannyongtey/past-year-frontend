@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Learning from 'containers/Learning'
 import Home from 'containers/Home'

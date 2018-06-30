@@ -1,5 +1,5 @@
-import appReducer from '../reducer'
-import { setUsername } from '../actions'
+import appReducer from 'containers/App/reducer'
+import { setUsername } from 'containers/App/actions'
 
 describe('appReducer', () => {
   let state

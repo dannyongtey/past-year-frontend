@@ -1,8 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Home, mapDispatchToProps } from 'containers/Home'
-import Input from 'components/Input'
+import { Home, mapDispatchToProps, mapStateToProps } from 'containers/Home'
+import { context as globalContext } from 'containers/App/constants'
 import { setUsername } from 'containers/App/actions'
+import Input from 'components/Input'
 
 describe('<Learning />', () => {
   it('render without error', () => {
@@ -44,6 +45,16 @@ describe('<Learning />', () => {
         result.onChangeUsername(username)
         expect(dispatch).toHaveBeenCalledWith(setUsername(username))
       })
+    })
+  })
+
+  describe('mapStateToProps', () => {
+    it('should return props from state selectors', () => {
+      const globalState = { username: 'username' }
+      const mockState = { [globalContext]: globalState }
+      const expectResult = { ...globalState }
+      const result = mapStateToProps(mockState)
+      expect(result).toEqual(expectResult)
     })
   })
 })

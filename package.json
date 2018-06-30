@@ -16,6 +16,7 @@
   "author": "nguyen.van.thang@framgia.com",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
@@ -26,6 +27,8 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "regenerator-runtime": "^0.12.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.8.3",
     "webpack-dev-server": "^3.1.4"
@@ -62,6 +65,11 @@
     ]
   },
   "jest": {
+    "collectCoverageFrom": [
+      "app/containers/**/*.{js,jsx}",
+      "app/components/**/*.{js,jsx}",
+      "!app/**/*.test.{js,jsx}"
+    ],
     "coverageThreshold": {
       "global": {
         "statements": 90,
