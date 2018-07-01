@@ -18,8 +18,8 @@ export default class LearningDocuments extends PureComponent {
     return `(${validKeywords.map(({ name: keywordName }) => keywordName)})`
   }
 
-  renderLearningLink() {
-    const { validKeywords, keyword } = this.props
+  renderLearningLink(keyword) {
+    const { validKeywords } = this.props
     const match = validKeywords.find(({ name }) => name === keyword)
     return match && (
       <div className="text-center mb-3">

@@ -1,5 +1,4 @@
 #   Simple React boilerplate
-Simple react boilerplate for newbie
 
 <br />
 
@@ -37,3 +36,14 @@ Simple react boilerplate for newbie
 - [**Jest**](https://facebook.github.io/jest/docs/en/tutorial-react.html): a very fast test runner with helpful fail messages,
 it's has simple configuration, coverage report with a single command line switch also.
 - [**Enzyme**](http://airbnb.io/enzyme/docs/api/): Convenient utilities to work with shallow rendering, static rendered markup or DOM rendering. It's also has jQuery-like API to find elements, read props, etc.
+
+## What's next from here?
+There are some suggestions for you in order to make this project more completely by your self
+- Styling: You can use some following libraries: [**styled-component**](https://www.styled-components.com/), [**css-module**](https://github.com/css-modules/css-modules), [**postcss**](https://github.com/postcss/postcss), [**less**](https://github.com/less/less.js) or [**sass**](https://github.com/sass/node-sass)
+- Add some necessary loader modules for webpack: [**file-loader**](https://github.com/webpack-contrib/file-loader), [**image-webpack-loader**](https://github.com/tcoopman/image-webpack-loader), or some [****others****](https://webpack.js.org/loaders/)
+- Use memoize with [**reselect**](https://github.com/reduxjs/reselect) for better performance
+- Dynamically load reducers for code splitting - [**how Twitter does it.**](http://nicolasgallagher.com/redux-modules-and-code-splitting/)
+- Dynamically load sagas for code splitting - You can do it with 'run' or 'runSaga' method of redux-saga (call them in componentDidMount hook and cancel at componentWillUnmount), or make your own HOC to inject saga by your self, it completely depends on you
+- Import [**immutable-js**](https://facebook.github.io/immutable-js/): Actually it's just optional, you can have some ideas from [**here**](https://redux.js.org/recipes/using-immutable.js-with-redux#why-should-i-use-an-immutable-focused-library-such-as-immutable-js)
+- Use an internationalization library: It can be [**react-intl**](https://github.com/yahoo/react-intl) or [**i18next**](https://github.com/i18next/react-i18next) or [**js-lingui**](https://github.com/lingui/js-lingui)
+- Apply some advance config for webpack in order to optimize your product's performance
