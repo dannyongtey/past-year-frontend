@@ -44,6 +44,9 @@ There are some suggestions for you in order to make this project more completely
 - Use memoize with [**reselect**](https://github.com/reduxjs/reselect) for better performance
 - Dynamically load reducers for code splitting - [**how Twitter does it.**](http://nicolasgallagher.com/redux-modules-and-code-splitting/)
 - Dynamically load sagas for code splitting - You can do it with 'run' or 'runSaga' method of redux-saga (call them in componentDidMount hook and cancel at componentWillUnmount), or make your own HOC to inject saga by your self, it completely depends on you
+- Code splitting with [**react-loadable**](https://github.com/jamiebuilds/react-loadable): A higher order component for loading components with dynamic imports.
+- Use [**react-helmet**](https://github.com/nfl/react-helmet) for SEO: React Helmet is the most important component when it comes to the SEO of SPA. React Helmet is used to manage the metadata of the corresponding web document that is being served via React components. Being a library on top of React, React Helmet is also executable on the server-side as well as client-side.
+The major advantage of React Helmet is the ease of integration without any major changes in the page coding
 - Import [**immutable-js**](https://facebook.github.io/immutable-js/): Actually it's just optional, you can have some ideas from [**here**](https://redux.js.org/recipes/using-immutable.js-with-redux#why-should-i-use-an-immutable-focused-library-such-as-immutable-js)
 - Use an internationalization library: It can be [**react-intl**](https://github.com/yahoo/react-intl) or [**i18next**](https://github.com/i18next/react-i18next) or [**js-lingui**](https://github.com/lingui/js-lingui)
 - Apply some advance config for webpack in order to optimize your product's performance
