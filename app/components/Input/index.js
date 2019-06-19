@@ -8,10 +8,11 @@ export default class Input extends React.PureComponent {
   }
 
   render() {
-    const { value, onChange } = this.props
+    const { value, onChange, placeholder } = this.props
     return (
       <div>
         <input
+          placeholder={placeholder}
           type="text"
           value={value}
           onChange={e => onChange(e.target.value)}
