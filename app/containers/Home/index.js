@@ -21,15 +21,16 @@ export class Home extends PureComponent {
 
   generateDownloadData = (type) =>{
     let rawData = this.state[type]
+    console.log(process)
     const processedData = type === 'shareID'? rawData : rawData.replace(/\s/g, '').split(',');
     this.props.onCommandDownload({
-      type,
+      // type,
       details: {
         type,
         details: processedData
       }
     })
-    console.log(processedData)
+    this.props.history.push('/download')
   }
 
   constructor(props){

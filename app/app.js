@@ -6,6 +6,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import App from './containers/App'
 import store from './store'
+import dotenv from 'dotenv'
+
+
+dotenv.config()
 
 ReactDOM.render(
   <Provider store={store}>

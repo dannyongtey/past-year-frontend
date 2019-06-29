@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Input from 'components/Input'
 import { setUsername } from 'containers/App/actions'
 import { selectUsername } from 'containers/App/selectors'
+import { showSnack } from 'react-redux-snackbar';
+ 
 
 export class Download extends PureComponent {
     static propTypes = {
@@ -15,6 +17,11 @@ export class Download extends PureComponent {
     constructor(props) {
         super(props)
         console.log(this.props)
+        // this.props.showSnack('myUniqueId', {
+        //     label: 'Yay, that actually worked!',
+        //     timeout: 7000,
+        //     button: { label: 'OK, GOT IT' }
+        // });
     }
 
     render() {
@@ -34,6 +41,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch => ({
     onChangeUsername: value => dispatch(setUsername(value)),
+    showSnack: (id, options) => dispatch(showSnack(id, options)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Download)

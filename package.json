@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "start": "./node_modules/.bin/webpack-dev-server --config ./internals/webpack/webpack.config.js --mode=development",
-    "build": "webpack --config ./internals/webpack/webpack.config.js --mode=production"
+    "start": "cross-env NODE_ENV=DEVELOPMENT ./node_modules/.bin/webpack-dev-server --config ./internals/webpack/webpack.config.js --mode=development",
+    "build": "cross-env NODE_ENV=PRODUCTION webpack --config ./internals/webpack/webpack.config.js  --mode=production"
   },
   "keywords": [
     "react",
@@ -17,15 +17,20 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-stage-0": "^7.0.0",
+    "@material/react-snackbar": "^0.14.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "css-loader": "^1.0.0",
+    "dotenv": "^8.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "fs": "0.0.1-security",
+    "js-file-download": "^0.4.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "react-redux-snackbar": "^1.1.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
@@ -48,6 +53,7 @@
     "babel-loader": "^8.0.2",
     "babel-register": "^6.26.0",
     "coveralls": "^3.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.0.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-airbnb-base": "^13.0.0",

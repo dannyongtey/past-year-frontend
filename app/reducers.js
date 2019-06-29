@@ -3,15 +3,13 @@
  */
 
 import { combineReducers } from 'redux'
-
+import { snackbarReducer } from 'react-redux-snackbar';
 import globalReducer from 'containers/App/reducer'
 import { context as globalContext } from 'containers/App/constants'
-import learningReducer from 'containers/Learning/reducer'
-import { context as learningContext } from 'containers/Learning/constants'
 
 const reducer = combineReducers({
-  [learningContext]: learningReducer,
   [globalContext]: globalReducer,
+  snackbar: snackbarReducer,
 })
 
 export default reducer

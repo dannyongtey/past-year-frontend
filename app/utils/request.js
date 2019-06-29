@@ -1,10 +1,14 @@
 import axios from 'axios';
 
+axios.defaults.baseURL = 'http://localhost:3000'
+
+
 function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
-  return response.data;
+  
+  return response;
 }
 
 function checkStatus(response) {
@@ -12,13 +16,16 @@ function checkStatus(response) {
     return response;
   }
 
-  const error = new Error(response.statusText);
+  const error = new Error(response.status);
   error.response = response;
   throw error;
 }
 
-export default function request(type, url, options) {
+export default function request({type, url, options}) {
   return axios[type](url, options)
     .then(checkStatus)
-    .then(parseJSON);
+    .then(parseJSON)
+    .catch(err => {
+      throw err
+    })
 }

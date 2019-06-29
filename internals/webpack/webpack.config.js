@@ -47,11 +47,13 @@ module.exports = {
       '.js',
     ],
   },
+  node: {
+    fs: "empty"
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
       inject: true,
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
 }
