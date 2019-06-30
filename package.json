@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "start": "cross-env NODE_ENV=DEVELOPMENT ./node_modules/.bin/webpack-dev-server --config ./internals/webpack/webpack.config.js --mode=development",
+    "start": "cross-env REACT_APP_NODE_ENV=DEVELOPMENT && ./node_modules/.bin/webpack-dev-server --config ./internals/webpack/webpack.config.js --mode=development",
     "build": "cross-env NODE_ENV=PRODUCTION webpack --config ./internals/webpack/webpack.config.js  --mode=production"
   },
   "keywords": [

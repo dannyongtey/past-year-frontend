@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Input from 'components/Input'
-import { setUsername, setDownloadData, loginUser, checkLogin, logoutUser } from 'containers/App/actions'
+import { setUsername, setDownloadData, loginUser, logoutUser } from 'containers/App/actions'
 import { selectUsername, selectAuth } from 'containers/App/selectors'
 import { GoogleLogin } from 'react-google-login';
 import { showSnack } from 'react-redux-snackbar';
@@ -38,7 +38,6 @@ export class Home extends PureComponent {
 
   constructor(props) {
     super(props)
-    this.props.checkLogin()
     this.state = {
       single: '',
       multiple: '',
@@ -165,7 +164,6 @@ export const mapDispatchToProps = dispatch => ({
   onCommandDownload: value => dispatch(setDownloadData(value)),
   showSnack: (id, options) => dispatch(showSnack(id, options)),
   loginUser: value => dispatch(loginUser(value)),
-  checkLogin: () => dispatch(checkLogin()),
   logout: () => dispatch(logoutUser()),
 })
 

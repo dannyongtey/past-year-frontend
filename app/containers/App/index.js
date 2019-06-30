@@ -3,8 +3,15 @@ import { Switch, Route } from 'react-router-dom'
 import Home from 'containers/Home'
 import { Snackbar } from 'react-redux-snackbar';
 import Download from 'containers/Download'
+import { connect } from 'react-redux'
+import { checkLogin } from 'containers/App/actions'
 
-export default class App extends Component {
+export class App extends Component {
+
+  componentDidMount(){
+    this.props.checkLogin()
+  }
+
   render() {
     return (
       <Fragment>
@@ -18,3 +25,12 @@ export default class App extends Component {
     )
   }
 }
+
+export const mapStateToProps = _ => ({
+})
+
+export const mapDispatchToProps = dispatch => ({
+  checkLogin: () => dispatch(checkLogin()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
