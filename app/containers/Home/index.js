@@ -68,6 +68,13 @@ export class Home extends PureComponent {
     this.props.logout()
   }
 
+  isValidEmail(email) {
+    if (!email.endsWith('@student.mmu.edu.my')) {
+      return false
+    }
+    return true
+  }
+
   render() {
 
     const { isLoggedIn, loginData } = this.props
@@ -80,48 +87,53 @@ export class Home extends PureComponent {
           <br />
           {isLoggedIn ?
             <div className='text-center'>
-              Logged in as {loginData.profileObj.name}. Welcome!
-              <p><a style={{color: 'blue', textDecoration: 'underline', cursor: 'pointer'}} onClick={this.logout}>Logout</a></p>
+              {this.isValidEmail(loginData.profileObj.email) ?
+                'Logged in as ' + loginData.profileObj.name + '. Welcome!'
+                :
+                'You must use MMU approved student email (ends with @student.mmu.edu.my) to access the functions. Try clearing your cache if you are unable to choose credentials.'
+              }
+              <p><a style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }} onClick={this.logout}>Logout</a></p>
             </div>
             :
             <div>
-              
+
             </div>
           }
         </div>
 
         {isLoggedIn ?
+          this.isValidEmail(loginData.profileObj.email) ?
+            <div className="row mt-5">
 
-          <div className="row mt-5">
-
-            <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
-              <h5>Enter ID</h5>
-              <p>to download single paper.</p>
-              <Input placeholder="12345, 54321" onChange={(data) => this.updateField({ data, field: 'single' })} />
-              <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('single')}>
-                Download
+              <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
+                <h5>Enter ID</h5>
+                <p>to download single paper.</p>
+                <Input placeholder="12345, 54321" onChange={(data) => this.updateField({ data, field: 'single' })} />
+                <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('single')}>
+                  Download
           </button>
-            </div>
+              </div>
 
-            <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
-              <h5>Enter Subject Code</h5>
-              <p>to download papers for that subject.</p>
-              <Input placeholder="TMD 1234, CCB 5678" onChange={(data) => this.updateField({ data, field: 'multiple' })} />
-              <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('multiple')}>
-                Download
+              <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
+                <h5>Enter Subject Code</h5>
+                <p>to download papers for that subject.</p>
+                <Input placeholder="TMD 1234, CCB 5678" onChange={(data) => this.updateField({ data, field: 'multiple' })} />
+                <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('multiple')}>
+                  Download
           </button>
-            </div>
+              </div>
 
-            <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
-              <h5>Enter download ID</h5>
-              <p>to download a previously submitted request.</p>
-              <Input onChange={(data) => this.updateField({ data, field: 'shareID' })} />
-              <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('shareID')}>
-                Download
+              <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
+                <h5>Enter download ID</h5>
+                <p>to download a previously submitted request.</p>
+                <Input onChange={(data) => this.updateField({ data, field: 'shareID' })} />
+                <button className="mt-3" type="button" onClick={(e) => this.generateDownloadData('shareID')}>
+                  Download
           </button>
+              </div>
             </div>
-          </div>
-
+            :
+            <div></div>
           :
 
           <div
