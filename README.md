@@ -4,7 +4,11 @@ The front end repo for the scrapper backend.
 
 ## Status
 
-In active development. No pull requests accepted at the moment.
+Alpha. Fully working as of now. Tweaks needed here and there.
+
+### Known bug list
+
+- Environment variables not loaded
 
 ## Tech Stack
 
@@ -24,8 +28,8 @@ Pull the thing. Then,
 
 ## I Want to Contribute
 
-No pull requests are accepted at the moment. 
+Pull requests are accepted at the moment. 
 
-However, I purposely kept the design at a minimum so someone else who is interested can make a better design.
+I purposely kept the design at a minimum so someone else who is interested can make a better design.
 
 
