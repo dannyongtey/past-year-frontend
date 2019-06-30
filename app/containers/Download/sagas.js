@@ -50,7 +50,6 @@ export function* fetchData({ data }) {
 
     try {
         const response = yield call(request, { type: method, url: downloadURL, options: postBody })
-        console.log(response)
         if (response.headers) {
             if (response.headers['content-type']) {
                 const contentType = response.headers['content-type']

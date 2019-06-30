@@ -1,4 +1,4 @@
-import { SET_USER_NAME, SET_DOWNLOAD_DATA, SET_ERROR_MESSAGE } from './constants'
+import { SET_USER_NAME, SET_DOWNLOAD_DATA, LOG_OUT_USER, LOG_IN_USER } from './constants'
 
 const initState = {
   username: '',
@@ -6,6 +6,7 @@ const initState = {
     type: '',
     details: null,
   },
+  auth: {},
 }
 
 export default (state = initState, action) => {
@@ -14,6 +15,10 @@ export default (state = initState, action) => {
       return { ...state, username: action.username }
     case SET_DOWNLOAD_DATA:
       return { ...state, downloadDetails: action.data }
+    case LOG_IN_USER:
+      return {...state, auth: action.data}
+    case LOG_OUT_USER:
+      return {...state, auth: {}}
     default:
       return state
   }
