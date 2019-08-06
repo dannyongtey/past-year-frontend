@@ -17,10 +17,6 @@ export class Home extends PureComponent {
     onCommandDownload: PropTypes.func,
   }
 
-  goToLearningPage = () => {
-    const { history } = this.props
-    history.push('/learning')
-  }
 
   generateDownloadData = (type) => {
     let rawData = this.state[type]
@@ -33,6 +29,7 @@ export class Home extends PureComponent {
         details: processedData
       }
     })
+    console.log(this.props.history)
     this.props.history.push('/download')
   }
 
@@ -80,7 +77,7 @@ export class Home extends PureComponent {
     return (
       <div className="d-flex flex-column mt-4">
         <div className="text-center">
-          <h3>Past Year Scrapper </h3>
+          <h3>Past Year Scraper </h3>
           <h5>By <a href="https://github.com/dannyongtey">Danny</a></h5>
           <p>When I got screwed by a problem I screw the problem back.</p>
           <br />
