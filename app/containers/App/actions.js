@@ -1,4 +1,4 @@
-import { SET_USER_NAME, SET_DOWNLOAD_ID, SET_DOWNLOAD_DATA, LOG_OUT_USER, CHECK_LOG_IN, LOG_IN_USER } from './constants'
+import { SET_USER_NAME, SET_DOWNLOAD_ID, CLEAR_DOWNLOAD_DATA, SET_DOWNLOAD_DATA, LOG_OUT_USER, CHECK_LOG_IN, LOG_IN_USER } from './constants'
 
 export function setUsername(username) {
   return {
@@ -18,6 +18,12 @@ export function setDownloadID(data){
   return {
     type: SET_DOWNLOAD_ID,
     data,
+  }
+}
+
+export function clearDownloadData(){
+  return {
+    type: CLEAR_DOWNLOAD_DATA
   }
 }
 

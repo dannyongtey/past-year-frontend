@@ -17,11 +17,6 @@ export class Download extends PureComponent {
 
     constructor(props) {
         super(props)
-        // this.props.showSnack('myUniqueId', {
-        //     label: 'Yay, that actually worked!',
-        //     timeout: 7000,
-        //     button: { label: 'OK, GOT IT' }
-        // });
     }
 
     render() {

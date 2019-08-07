@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { SET_DOWNLOAD_DATA, SET_DOWNLOAD_ID } from 'containers/App/constants'
+import { SET_DOWNLOAD_DATA, SET_DOWNLOAD_ID, CLEAR_DOWNLOAD_DATA } from 'containers/App/constants'
 import { showSnack } from 'react-redux-snackbar';
 import fileDownload from 'js-file-download'
 import request from 'utils/request'
@@ -76,6 +76,7 @@ export function* fetchData({ data }) {
             timeout: 5000,
             button: { label: 'OK' }
         }))
+        yield put({type: CLEAR_DOWNLOAD_DATA})
     }
     // const data = yield request('post')
 }
