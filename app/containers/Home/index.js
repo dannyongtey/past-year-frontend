@@ -9,6 +9,21 @@ import { showSnack } from 'react-redux-snackbar';
 
 
 export class Home extends PureComponent {
+
+  componentDidMount() {
+    const shareID = this.props.location.pathname.split('/')[1]
+    const SHAREID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+    if (SHAREID_REGEX.test(shareID)) {
+      setTimeout(() => {
+        this.setState({
+          shareID
+        })
+        this.generateDownloadData('shareID')
+      }, 1000);
+
+    }
+  }
+
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func,
@@ -20,7 +35,6 @@ export class Home extends PureComponent {
 
   generateDownloadData = (type) => {
     let rawData = this.state[type]
-    console.log(process)
     const processedData = type === 'shareID' ? rawData : rawData.replace(/\s/g, '').split(',');
     this.props.onCommandDownload({
       // type,

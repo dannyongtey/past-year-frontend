@@ -8,6 +8,7 @@ import { showSnack } from 'react-redux-snackbar';
 
 
 export class Download extends PureComponent {
+
     static propTypes = {
         history: PropTypes.shape({
             push: PropTypes.func,
@@ -16,7 +17,6 @@ export class Download extends PureComponent {
 
     constructor(props) {
         super(props)
-        console.log(this.props)
         // this.props.showSnack('myUniqueId', {
         //     label: 'Yay, that actually worked!',
         //     timeout: 7000,

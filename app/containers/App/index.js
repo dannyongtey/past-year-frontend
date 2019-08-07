@@ -18,8 +18,8 @@ export class App extends Component {
       <Fragment>
         <Snackbar />
         <Switch>
-          <Route path="/download/:id" component={Download} />
           <Route path="/download" component={Download} />
+          <Route path="/:id" component={Home} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Fragment>

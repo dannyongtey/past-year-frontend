@@ -71,7 +71,6 @@ export function* fetchData({ data }) {
             }
         }
     } catch (err) {
-        console.log(err.response)
         yield put(showSnack('error', {
             label: err.response.data.error || 'An unknown error occurred. Did you enter all details correctly?',
             timeout: 5000,
@@ -97,7 +96,7 @@ async function pingForDownload(id) {
             const contentType = response.headers['content-type']
             if (contentType === 'application/zip') {
                 fileDownload(response.data, 'past-years.zip')
-            } 
+            }
             clearInterval(interval)
         } catch (err) {
             console.log(err)
