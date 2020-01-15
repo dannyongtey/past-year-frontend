@@ -67,13 +67,20 @@ function checkStatus(response) {
   throw error;
 }
 
-export default function request({ type, url, options }) {
-  return axios[type](url, options)
+export default function request({ type, url, postBody, options }) {
+  return type == 'get'? 
+  axios[type](url, options)
     .then(checkStatus)
     .then(parseJSON)
     .catch(err => {
       throw err
-    })
+    }) : 
+    axios[type](url, postBody, options)
+    .then(checkStatus)
+    .then(parseJSON)
+    .catch(err => {
+      throw err
+    }) 
 }
 
 export function setAuthHeader(header) {

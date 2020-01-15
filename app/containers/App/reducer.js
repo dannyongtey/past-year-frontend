@@ -5,6 +5,7 @@ const initState = {
   downloadDetails: {
     type: '',
     details: null,
+    uuid: null,
   },
   downloadID: null,
   auth: {},

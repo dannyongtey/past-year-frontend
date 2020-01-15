@@ -6,7 +6,7 @@ import { setUsername, setDownloadData, loginUser, logoutUser } from 'containers/
 import { selectUsername, selectAuth } from 'containers/App/selectors'
 import { GoogleLogin } from 'react-google-login';
 import { showSnack } from 'react-redux-snackbar';
-
+import uuid from 'uuid/v1'
 
 export class Home extends PureComponent {
 
@@ -40,7 +40,8 @@ export class Home extends PureComponent {
       // type,
       details: {
         type,
-        details: processedData
+        details: processedData,
+        uuid: uuid(),
       }
     })
     console.log(this.props.history)
@@ -93,7 +94,7 @@ export class Home extends PureComponent {
         <div className="text-center">
           <h3>Past Year Scraper </h3>
           <h5>By <a href="https://github.com/dannyongtey">Danny</a></h5>
-          <p>When I got screwed by a problem I screw the problem back.</p>
+          <p>Version 2 is coming. Stay tuned!</p>
           <br />
           {isLoggedIn ?
             <div className='text-center'>
@@ -114,7 +115,7 @@ export class Home extends PureComponent {
         {isLoggedIn ?
           this.isValidEmail(loginData.profileObj.email) ?
             <div className="row mt-5">
-
+              
               <div className="py-5 border text-center justify-content-center col-12 col-lg-4">
                 <h5>Enter ID</h5>
                 <p>to download single paper.</p>

@@ -4,7 +4,7 @@ import { showSnack } from 'react-redux-snackbar';
 import fileDownload from 'js-file-download'
 import request from 'utils/request'
 
-const SHARED_ID_URL = '/download/multiple/'
+const SHARED_ID_URL = '/download/shared'
 
 export default function* downloadSaga() {
     yield takeLatest(SET_DOWNLOAD_DATA, fetchData)
@@ -12,24 +12,29 @@ export default function* downloadSaga() {
 
 export function* fetchData({ data }) {
     let { details } = data
-    const { type } = details
+    const { type, uuid: id } = details
     details = details.details
     let downloadURL
     let method
     let postBody = {}
+    let options = {}
     switch (type) {
         case 'single':
             if (details.length === 1) {
-                downloadURL = `/download/single/${details[0]}`
+                downloadURL = `/download/${details[0]}`
                 method = 'get'
-                postBody = {
+                options = {
                     responseType: 'blob',
                 }
             } else {
                 downloadURL = '/download/single'
                 method = 'post'
                 postBody = {
-                    ids: details
+                    ids: details,
+                    id,
+                }
+                options = {
+                    responseType: 'blob'
                 }
             }
             break
@@ -37,35 +42,48 @@ export function* fetchData({ data }) {
             downloadURL = '/download/multiple'
             postBody = {
                 subjects: details,
+                id,
+            }
+            options = {
+                responseType: 'arraybuffer',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
             method = 'post'
             break
         case 'shareID':
-            downloadURL = `${SHARED_ID_URL}${details}`
+            downloadURL = `${SHARED_ID_URL}`
             postBody = {
+                id,
                 responseType: 'blob',
             }
-            method = 'get'
+            method = 'post'
             break
 
     }
 
     try {
-        const response = yield call(request, { type: method, url: downloadURL, options: postBody })
+        const response = yield call(request, { type: method, url: downloadURL, postBody, options })
+        yield put({ type: SET_DOWNLOAD_ID, data: id })
         if (response.headers) {
             if (response.headers['content-type']) {
                 const contentType = response.headers['content-type']
                 if (contentType === 'application/zip') {
-                    fileDownload(response.data, 'past-years.zip')
+                    try {
+                        console.log(response)
+                        fileDownload(response.data, 'files.zip')
+                    } catch (err) {
+                        console.log(err)
+                    }
                 } else if (contentType === 'application/pdf') {
                     fileDownload(response.data, `${details[0]}.pdf`)
                 } else { // Normal download
-                    const { id } = response.data
+                    // const { id } = response.data
                     yield put(showSnack('await ID', {
                         label: 'Server is currently processing your request.',
                         timeout: 5000,
                     }))
-                    yield put({ type: SET_DOWNLOAD_ID, data: id })
                     pingForDownload(id)
                 }
             }
@@ -76,7 +94,7 @@ export function* fetchData({ data }) {
             timeout: 5000,
             button: { label: 'OK' }
         }))
-        yield put({type: CLEAR_DOWNLOAD_DATA})
+        yield put({ type: CLEAR_DOWNLOAD_DATA  })
     }
     // const data = yield request('post')
 }
