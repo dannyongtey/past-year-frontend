@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://minecraft.mmu.edu.my/pastyear'
 axios.defaults.headers.common = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Credentials': 'true',

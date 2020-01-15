@@ -26,9 +26,11 @@ export class Download extends PureComponent {
                 <h4>The server is processing your request.</h4>
                 <p>Download will automatically start once the request has been processed.</p>
                 <p>Sadly, there is no fancy loading animation.</p>
+                <p><a href='/'>Back to home</a></p>
                 {downloadID ?
                     <div>
                         <p>{downloadID}</p>
+                        <p>{window.origin}/{downloadID}</p>
                         <p>Share the link or download ID with your friends so they can download what you have downloaded!</p>
                     </div>
                     :

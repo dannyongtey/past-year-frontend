@@ -55,8 +55,14 @@ export function* fetchData({ data }) {
         case 'shareID':
             downloadURL = `${SHARED_ID_URL}`
             postBody = {
-                id,
-                responseType: 'blob',
+                id: details,
+                type: 'shared',
+            }
+            options = {
+                responseType: 'arraybuffer',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
             method = 'post'
             break
@@ -65,7 +71,9 @@ export function* fetchData({ data }) {
 
     try {
         const response = yield call(request, { type: method, url: downloadURL, postBody, options })
-        yield put({ type: SET_DOWNLOAD_ID, data: id })
+        if (type !== 'shareID'){
+            yield put({ type: SET_DOWNLOAD_ID, data: id })
+        }
         if (response.headers) {
             if (response.headers['content-type']) {
                 const contentType = response.headers['content-type']
