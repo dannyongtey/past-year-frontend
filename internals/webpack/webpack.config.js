@@ -38,7 +38,7 @@ module.exports = {
   devServer: {
     contentBase: parentDir,
     historyApiFallback: true,
-    port: 9000,
+    port: 8000,
     hot: true,
   },
   resolve: {
