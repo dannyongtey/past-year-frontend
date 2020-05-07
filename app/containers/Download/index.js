@@ -30,7 +30,7 @@ export class Download extends PureComponent {
                 {downloadID ?
                     <div>
                         <p>{downloadID}</p>
-                        <p>{window.origin}/{downloadID}</p>
+                        <p>{window.origin}/#/{downloadID}</p>
                         <p>Share the link or download ID with your friends so they can download what you have downloaded!</p>
                     </div>
                     :

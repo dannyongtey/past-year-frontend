@@ -11,7 +11,7 @@ import uuid from 'uuid/v1'
 export class Home extends PureComponent {
 
   componentDidMount() {
-    const shareID = this.props.location.pathname.split('/')[1]
+    const shareID = this.props.location.pathname.split('/#/')[1]
     const SHAREID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
     if (SHAREID_REGEX.test(shareID)) {
       setTimeout(() => {
